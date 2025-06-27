@@ -68,3 +68,13 @@ Always **scan only with permission**.
 
 ```bash
 python3 port_scanner.py
+```
+
+## ⚖️ Pros & Cons of Speed-Up Methods
+
+| Method           | ✅ Pros                                                      | ❌ Cons                                                         |
+|------------------|--------------------------------------------------------------|-----------------------------------------------------------------|
+| 🕒 Shorter Timeout(port_scanner.py) | - Easy to implement (1-line change)                         | - May miss slow or laggy services (false negatives)             |
+| 🧵 Multi-threading | - Major speed boost<br>- Great for learning concurrency     | - Slightly more complex code<br>- Threads are limited by GIL    |
+| 🔄 AsyncIO         | - Fastest method<br>- Scalable to thousands of ports/hosts  | - Advanced concepts<br>- Requires async/await, event loop logic |
+
