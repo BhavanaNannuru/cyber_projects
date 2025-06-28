@@ -78,3 +78,24 @@ python3 port_scanner.py
 | 🧵 Multi-threading | - Major speed boost<br>- Great for learning concurrency     | - Slightly more complex code<br>- Threads are limited by GIL    |
 | 🔄 AsyncIO         | - Fastest method<br>- Scalable to thousands of ports/hosts  | - Advanced concepts<br>- Requires async/await, event loop logic |
 
+
+
+
+# 🛠️ Troubleshooting: Multi-threaded Port Scanner
+
+This guide explains **why open ports may not appear** when using a threaded port scanner, even if they appear in the synchronous version—and how to fix it.
+
+---
+
+## ✅ Checklist: Common Reasons & Fixes
+
+| Issue | Explanation | Fix |
+|-------|-------------|-----|
+| ⚡ **Too Many Threads** | Some servers throttle or drop rapid connections | Reduce `NUM_THREADS` to 10–20 |
+| ⏱️ **Timeout Too Short** | Short timeouts might miss slow responses | Increase `s.settimeout()` to `0.5` or `1.0` |
+| 🚫 **Daemon Threads Exit Too Early** | Threads terminate before finishing | Remove `daemon=True` and use `thread.join()` |
+| 🛑 **Target Has Few Open Ports** | e.g. scanme.nmap.org only has port 22/80 | Works as expected — try larger range |
+| 🧱 **Firewall/IPS Blocking** | Targets may block or drop scans | Reduce speed or switch to local test |
+| 🧪 **Code Logic Error** | Threads empty the queue too fast or clash | Use `.join()` on both queue and threads |
+
+---
