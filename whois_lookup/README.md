@@ -1,6 +1,6 @@
 # 🕵️ WHOIS Threat Analyzer
 
-A Python-based cybersecurity tool to analyze domain WHOIS data, assess risk, and flag potentially malicious domains based on multiple signals.
+A Python-based cybersecurity tool to analyze domain WHOIS data, assess risk, and flag potentially malicious domains based on multiple signals. The tool also includes DNS resolution to fetch the IP address of each domain.
 
 > ⚡️ Designed for cybersecurity learners, CTI analysts, and ethical hackers who want a practical, extensible WHOIS inspection pipeline.
 
@@ -20,7 +20,7 @@ A Python-based cybersecurity tool to analyze domain WHOIS data, assess risk, and
 - 📝 **CSV Export** for CTI use or reporting
 - 🎨 **Terminal Colorization** for clarity
 - 📦 Modular design following software engineering best practices
-
+- 🖥️ Each domain is resolved to its corresponding IP using DNS lookup.
 ---
 
 ## 🚀 How to Use
@@ -95,9 +95,20 @@ A curated list of ethical, legal test domains to validate scoring logic:
 
 ---
 
+**🎯 Why IP Address Lookup Matters:**
+- Adds **network-layer visibility** to domain intelligence.
+- Helps detect multiple suspicious domains pointing to the same IP.
+- Forms the foundation for:
+  - 🌍 GeoIP-based country identification
+  - 📶 ASN (Autonomous System) mapping
+  - 🔐 IP reputation/blocklist checks
+
+This enhancement boosts the depth of threat intelligence by combining both **domain-level** and **infrastructure-level** context.
+
+---
+
 ## 📈 Future Enhancements
 
-- Integrate `argparse` for flexible CLI usage  
 - Add support for third-party WHOIS APIs  
 - Generate analytics visuals from CSV output  
 - Cross-check with reputation APIs (e.g., VirusTotal, AbuseIPDB)

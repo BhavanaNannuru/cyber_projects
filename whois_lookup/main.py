@@ -4,7 +4,7 @@ import argparse
 from time import sleep
 from colorama import init, Fore, Style
 
-from whois_lookup import get_whois_data
+from whois_lookup import get_whois_data, resolve_domain
 from threat_scoring import calculate_threat_score, classify_risk
 
 
@@ -31,6 +31,7 @@ def color_score(score):
 
 
 def analyze_domain(domain):
+    ip = resolve_domain(domain)
     whois_data = get_whois_data(domain)
     if not whois_data:
         return None
@@ -40,6 +41,7 @@ def analyze_domain(domain):
 
     return {
         "Domain": domain,
+        "IP Address": ip or "Unresolved",
         "Registrar": whois_data.registrar or "Unknown",
         "Created": str(whois_data.creation_date),
         "Expires": str(whois_data.expiration_date),
@@ -56,9 +58,11 @@ def analyze_single_domain(domain):
     result = analyze_domain(domain)
     if not result:
         return
+    
 
     print("\n=========== WHOIS THREAT REPORT ===========")
     print(f"🔹 Domain       : {result['Domain']}")
+    print(f"🔹 IP Address   : {result['IP Address']}")
     print(f"🔹 Registrar    : {result['Registrar']}")
     print(f"🔹 Created      : {result['Created']}")
     print(f"🔹 Expires      : {result['Expires']}")
@@ -90,7 +94,7 @@ def analyze_bulk(file_path="domains.txt", output_file="scan_results.csv"):
         print(f"🔍 Analyzing: {domain}")
         result = analyze_domain(domain)
         if result:
-            print(f"    ➤ Risk: {color_risk(result['Risk'])} | Score: {color_score(result['Score'])}/10", end ="\n\n")
+            print(f"    ➤ IP: {result['IP Address']} | Risk: {color_risk(result['Risk'])} | Score: {color_score(result['Score'])}/10\n")
             results.append(result)
         sleep(0.3)
 

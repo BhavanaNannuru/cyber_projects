@@ -40,3 +40,13 @@ def get_whois_data(domain):
         print(f"[ERROR] Failed to fetch WHOIS for {domain}:\n→ {e}", end="\n\n")
     
     return None
+
+def resolve_domain(domain):
+    """
+    Resolve domain name to IP address.
+    Returns IP as string or None if resolution fails.
+    """
+    try:
+        return socket.gethostbyname(domain)
+    except socket.gaierror:
+        return None

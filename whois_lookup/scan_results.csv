@@ -1,0 +1,6 @@
+Domain,IP Address,Registrar,Created,Expires,Score,Risk,Subrisk,Flags,Country,Name
+iana.org,192.0.43.8,"CSC Corporate Domains, Inc.",1995-06-05 04:00:00,2027-12-08 17:00:53,1,SAFE,,"Unrecognized registrar: CSC Corporate Domains, Inc.",US,REDACTED
+abc1234567.xyz,Unresolved,Alibaba Cloud Computing Ltd. d/b/a HiChina (www.net.cn),2025-03-23 03:08:07,2026-03-23 23:59:59,10,MALICIOUS,Highly suspicious — possible phishing or malware,Relatively new domain (99 days old); Unrecognized registrar: Alibaba Cloud Computing Ltd. d/b/a HiChina (www.net.cn); High-abuse TLD: .xyz; Abused TLD used: .xyz; Numerically padded domain — suspicious,CN,
+scanme.org,45.33.32.156,DYNADOT LLC,2005-02-24 11:23:22,2029-02-24 11:23:22,3,LOW RISK,Legit but low-trust,WHOIS privacy protection enabled; Unrecognized registrar: DYNADOT LLC,US,"['REDACTED', 'REDACTED FOR PRIVACY']"
+cyberdefense.org,Unresolved,Tucows Domains Inc.,2009-04-21 22:04:54,2026-04-21 22:04:54,1,SAFE,,Unrecognized registrar: Tucows Domains Inc.,IT,REDACTED
+university.edu,52.76.120.174,Unknown,1996-08-26 00:00:00,2028-07-31 00:00:00,1,SAFE,,Unrecognized registrar: Unknown,,
