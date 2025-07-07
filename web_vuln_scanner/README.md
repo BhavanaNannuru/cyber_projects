@@ -1,9 +1,3 @@
-__     __       _       _   _                      _   
-\ \   / /__ _ _(_)_ __ | |_| |__   ___  _ __   __ _| |  
- \ \ / / _ \ '__| | '_ \| __| '_ \ / _ \| '_ \ / _` | |  
-  \ V /  __/ |  | | | | | |_| | | | (_) | | | | (_| | |  
-   \_/ \___|_|  |_|_| |_|\__|_| |_|\___/|_| |_|\__,_|_|  
-
 # 🕷️ Web Vulnerability Scanner
 
 A Python-based tool to **crawl web applications**, discover links and forms, and prepare for automated security testing. This project focuses on detecting common web vulnerabilities (like XSS and SQL Injection) in future phases.
