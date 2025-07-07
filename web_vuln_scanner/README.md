@@ -22,13 +22,6 @@ A Python-based tool to **crawl web applications**, discover links and forms, and
 
 ---
 
-## 📥 Installation
-
-1️⃣ Clone this repository:
-```bash
-git clone https://github.com/<your-username>/web-vuln-scanner.git
-cd web-vuln-scanner
-```
 
 ## 🤝 Contributions
 
