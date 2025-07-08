@@ -2,34 +2,52 @@
 
 Welcome to **Python Cyber Projects**! This repository contains a collection of simple, beginner-friendly Python projects focused on cybersecurity. These projects are curated from various trusted sources and created for my personal learning and skill-building.
 
----
+## 📂 Project Structure
 
-## **Why this Repository?**
+| Project                | Description                                                                                          |
+|------------------------|------------------------------------------------------------------------------------------------------|
+| 🔑 **password_strength** | A password strength checker that evaluates user passwords against common vulnerabilities.           |
+| 🔍 **port_scanner**       | A Python-based TCP port scanner with multi-threading support for fast and efficient scanning.      |
+| 🕷️ **web_vuln_scanner**  | A basic web crawler and vulnerability scanner for identifying common web security issues.           |
+| 🌐 **whois_lookup**      | A WHOIS threat analyzer that fetches WHOIS data, assesses domain risks, and exports detailed reports.|
 
-- 🌱 Beginner-friendly projects to help myself dive into cybersecurity.
-- 🛠️ Hands-on learning with practical coding examples.
-- 📚 A growing collection for continuous learning and exploration.
-
----
-
-## **Projects Included**
-
-Click on any project name below to navigate to its folder and access the code, instructions, and relevant resources:
-
-1. [Password Strength Analyzer](./password-strength-analyzer)  
-   Evaluate and improve password security using Python tools like `zxcvbn` and Pwned Passwords API.
+###### and many more!
 
 ---
 
-## **Acknowledgments**
+## 🚀 Features Across Projects
 
-I extend my gratitude to the creators and maintainers of the amazing tools and resources that made these projects possible:
-
-- **[zxcvbn](https://github.com/dropbox/zxcvbn)**:  
-  A password strength estimator developed by Dropbox, providing detailed feedback and crack time estimates.
-
-- **[Pwned Passwords API](https://haveibeenpwned.com/Passwords)**:  
-  A database of compromised passwords used to check for password breaches.
-
+- ✅ Beginner-to-Advanced Python implementations
+- ✅ Clean modular design for easy enhancements
+- ✅ Real-world cybersecurity use-cases
+- ✅ Command-line interfaces (CLI) with colorized outputs
+- ✅ Exportable reports (CSV format for bulk analysis)
+- ✅ Ethical and legal focus for all tools
 
 ---
+
+## 🛠 Technologies Used
+
+- **Python 3.x**
+- `socket`, `threading`, `requests`, `BeautifulSoup`
+- `python-whois`, `argparse`, `colorama`
+- Modular coding principles and defensive programming techniques
+
+---
+
+## 📌 Usage
+
+Each project has its own detailed `README.md` file inside its folder with setup instructions, usage examples, and notes.
+
+---
+
+## ⚠️ Disclaimer
+
+This repository and its contents are intended for **educational and ethical purposes only**.  
+- 🚨 **Do not use these tools to scan, probe, or attack networks, systems, or domains without explicit authorization.**  
+- 🛡️ The developer is **not responsible** for any misuse or illegal activities performed with these scripts.  
+- ✅ Always ensure you have permission before performing any security testing.  
+
+By using these projects, you agree to comply with all applicable laws and regulations in your jurisdiction.
+
+
