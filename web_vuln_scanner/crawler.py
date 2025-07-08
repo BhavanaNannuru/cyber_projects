@@ -4,11 +4,14 @@ from urllib.parse import urljoin, urlparse
 import sys
 from colorama import Fore, Style, init
 import time
+from datetime import datetime
+
 
 # Initialize Colorama
 init(autoreset=True)
 
 visited_links = set()
+forms_found = []  # Store found forms for reporting
 MAX_LINKS = 100       # Limit total links to crawl
 MAX_DEPTH = 10        # Limit crawl depth
 
@@ -74,8 +77,68 @@ def crawl(url, base_url, depth=0):
             form_method = form.get('method', 'GET').upper()
             print(Fore.YELLOW + f"    [Form Found] Action: {form_action}, Method: {form_method}", Style.RESET_ALL)
 
+            inputs = form.find_all('input')
+            input_details = []
+            for input_tag in inputs:
+                input_name = input_tag.get('name') or "[No Name]"
+                input_type = input_tag.get('type', 'text')
+                print(Fore.MAGENTA + f"        [Input] name={input_name}, type={input_type}", Style.RESET_ALL)
+                input_details.append({'name': input_name, 'type': input_type})
+            
+            # Save form details for report
+            forms_found.append({
+                'action': form_action,
+                'method': form_method,
+                'inputs': input_details,
+                'url': url
+            })
+
     except Exception as e:
         print(Fore.RED + f"[-] Error accessing {url}: {e}", Style.RESET_ALL)
+
+
+def save_report(elapsed_time):
+    """Save a stylish scan report to scan_report.txt"""
+    report_file = "scan_report.txt"
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+    with open(report_file, "w") as f:
+        # Header
+        f.write("="*60 + "\n\n\n")
+        f.write("          VulnHound Web Vulnerability Scanner Report\n")
+        f.write("="*60 + "\n\n\n")
+
+        # Metadata
+        f.write(f"Scan Time           : {timestamp}\n")
+        f.write(f"Target URL          : {target_url}\n")
+        f.write(f"Total Runtime       : {elapsed_time:.2f} seconds\n")
+        f.write(f"Total Pages Crawled : {len(visited_links)}\n")
+        f.write(f"Total Forms Found   : {len(forms_found)}\n")
+        f.write("-"*60 + "\n\n\n")
+
+        # Forms Details
+        if forms_found:
+            f.write("Forms Discovered:\n")
+            f.write("-"*60 + "\n")
+            for idx, form in enumerate(forms_found, 1):
+                f.write(f"[Form {idx}] URL: {form['url']}\n")
+                f.write(f"    Action : {form['action']}\n")
+                f.write(f"    Method : {form['method']}\n")
+                f.write("    Inputs :\n")
+                for input_field in form['inputs']:
+                    f.write(f"        - name={input_field['name']}, type={input_field['type']}\n")
+                f.write("-"*60 + "\n\n")
+        else:
+            f.write("No forms discovered during scan.\n")
+            f.write("-"*60 + "\n\n")
+
+        # Footer
+        f.write("\nEnd of Report\n\n")
+        f.write("="*60 + "\n")
+
+    print(Fore.BLUE + f"\n[✓] Stylish scan report saved to {report_file}")
+
+
 
 
 if __name__ == "__main__":
@@ -88,17 +151,23 @@ if __name__ == "__main__":
         target_url = sys.argv[1]
         print(Fore.CYAN + f"[+] Starting scan on: {target_url}", Style.RESET_ALL)
 
-        start_time = time.time()  # Start timer
+        start_time = time.time()
         crawl(target_url, target_url)
-        end_time = time.time()    # End timer
+        end_time = time.time()
 
         elapsed_time = end_time - start_time
         print(Fore.MAGENTA + f"\n[✓] Scan completed in {elapsed_time:.2f} seconds.", Style.RESET_ALL)
         print(Fore.MAGENTA + f"[✓] Total links crawled: {len(visited_links)}", Style.RESET_ALL)
+        print(Fore.MAGENTA + f"[✓] Total forms found: {len(forms_found)}", Style.RESET_ALL)
+
+        save_report(elapsed_time)
 
     except KeyboardInterrupt:
         end_time = time.time()
         elapsed_time = end_time - start_time
         print(Fore.RED + f"\n[!] Scan interrupted by user after {elapsed_time:.2f} seconds.", Style.RESET_ALL)
         print(Fore.RED + f"[!] Total links crawled before interrupt: {len(visited_links)}", Style.RESET_ALL)
+        print(Fore.RED + f"[!] Total forms found before interrupt: {len(forms_found)}", Style.RESET_ALL)
+        save_report(elapsed_time)
         sys.exit(0)
+
