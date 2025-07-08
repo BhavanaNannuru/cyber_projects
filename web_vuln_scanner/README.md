@@ -13,6 +13,22 @@ A Python-based tool to **crawl web applications**, discover links and forms, and
 
 ---
 
+## 🚀 Features (Day 2)
+- 🌐 **Domain-Restricted Crawling**: Scans links only within the target domain to avoid external sites.  
+- 🕸️ **Configurable Crawl Depth**: Set how deep the crawler explores nested links.  
+- 🔗 **Link Extraction**: Identifies and displays all links on crawled pages.  
+- 📝 **Form Detection & Parsing**: Detects HTML forms and extracts:  
+  - Form action URL and HTTP method (GET/POST).  
+  - All input fields with their names and types.  
+- 📄 **Scan Summary Report**: Generates a clean text report (`scan_report.txt`) that includes:  
+  - Total links crawled.  
+  - Total forms discovered.  
+  - Details of all forms and their inputs.  
+- 🕒 **Runtime Tracking**: Displays total scan duration in seconds.  
+- 🛑 **Graceful Exit Handling**: Saves progress even when interrupted (Ctrl+C).  
+
+---
+
 ## ⚙️ Tech Stack
 - **Language:** Python 3.x
 - **Libraries:** 
