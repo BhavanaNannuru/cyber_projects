@@ -29,7 +29,7 @@ def crawl(session, url, base_url, visited_links, forms_found, vulnerabilities, d
     visited_links.add(url)
 
     try:
-        response = session.get(url, timeout=5)
+        response = session.get(url, timeout=15)
         soup = BeautifulSoup(response.text, 'html.parser')
 
         # Extract and crawl links

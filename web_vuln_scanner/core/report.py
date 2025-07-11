@@ -54,4 +54,4 @@ def save_report(elapsed_time, target_url, visited_links, forms_found, vulnerabil
         f.write("\nEnd of Report\n")
         f.write("="*60 + "\n")
 
-    print(Fore.BLUE + f"\n[✓] Stylish scan report saved to {report_file}")
+    print(Fore.BLUE + f"\n[✓] Scan report saved to {report_file}")
