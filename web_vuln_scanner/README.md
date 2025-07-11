@@ -29,6 +29,18 @@ A Python-based tool to **crawl web applications**, discover links and forms, and
 
 ---
 
+## 🚀 Features (Day 3)
+- 🌐 **Refactored Crawler**: Modularized into `core/crawler.py`
+- 🔒 **XSS & SQLi Detection**: Added in `core/vulnerabilities.py`
+- 📝 **Stylish Reports**: Generates a professional `scan_report.txt`
+- 🗂️ **Modular Architecture**: Clean separation of concerns
+    - `core/utils.py`: Utility functions
+    - `core/report.py`: Handles reporting
+    - `core/vulnerabilities.py`: Vulnerability payloads and scanners
+- ⚡ **Ready for scaling**: Easy to add more vulnerability tests
+
+---
+
 ## ⚙️ Tech Stack
 - **Language:** Python 3.x
 - **Libraries:** 
